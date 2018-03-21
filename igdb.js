@@ -12,6 +12,3 @@
 //help options 
 
 //node igdb.js search --games --d -y 2015 -m 12
-
-const 
-    
