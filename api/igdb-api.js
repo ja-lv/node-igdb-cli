@@ -18,3 +18,32 @@ exports.getGame = (args) =>{
         });  
     })
 }
+exports.getCharacters = (args) =>{
+    return new Promise(function(fulfill, reject){
+        client.characters(args).then(response => {
+            fulfill(response.body)
+        })
+        // .catch(error => {
+        //     reject(error)
+        // });  
+    })
+}
+exports.getGameEngine = (args) =>{
+    return new Promise(function(fulfill, reject){
+        client.game_engines(args).then(response => {
+            fulfill(response.body)
+        })
+        // .catch(error => {
+        //     reject(error)
+        // });  
+    })
+}
+exports.getGenre = (args) =>{
+    return new Promise(function(fulfill, reject){
+        client.genres(args).then(response => {
+            fulfill(response.body)
+        }).catch(error => {
+            reject(error)
+        });  
+    })
+}
