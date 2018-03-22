@@ -5,7 +5,6 @@ const
 const flags = yargs.usage('$0: Usage <cmd> [options]')
     .command(require('./searchGame'))
     .demandCommand(1, "Please input a command")
-    .command(require('./searchCharacters'))
     .demandCommand(1, "Please input a command")
     .command(require('./searchByGenre'))
     .command(require('./searchGameEngine'))
