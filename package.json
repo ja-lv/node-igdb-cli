@@ -13,6 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "igdb-api-node": "^3.1.3",
+    "inquirer": "^5.1.0",
     "yargs": "^11.0.0"
   }
 }

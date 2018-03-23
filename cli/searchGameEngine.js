@@ -7,7 +7,7 @@ exports.describe = 'search GameEngine of a game' //'search a game by title'
 
 exports.builder = {
     title: {
-        alias: 'g', //t
+        alias: 'g', 
         describe: 'name(g) of GameEngine', //title of the game
         type: 'string'
     },
@@ -24,6 +24,15 @@ exports.builder = {
 }
 
 exports.handler = (argv) => {
+    if(!argv.id && !argv.title){
+        renderMessage("Please specify a game id or game title")
+        return ;
+    }
+
+    if(argv.id && argv.title){
+        renderMessage("Only a title or an id is allowed")
+        return ;
+    }
     igdb.getGameEngine({
         fields: '*',
         search: argv.name,
@@ -45,3 +54,6 @@ function renderGameArray(arr){
         }
     )
 } 
+function renderMessage(str){
+    console.log(str)
+}

@@ -4,15 +4,11 @@ const
 
 const flags = yargs.usage('$0: Usage <cmd> [options]')
     .command(require('./searchGame'))
-    .demandCommand(1, "Please input a command")
-    .demandCommand(1, "Please input a command")
     .command(require('./searchByGenre'))
-    .command(require('./searchGameEngine'))
-    // .command({
-    //     command:'searchByGenre',
-    //     desc:'play a game ',
-    //     handler:(argv) => { igdb-api.searchByGenre()}
-    // })
-    .demandCommand()
+    // .command(require('./searchCharacters'))
+    // .command(require('./searchGameEngine'))
+
+    .demandCommand(1, "Please input a command")
     .help('help')
 .argv
+
