@@ -34,7 +34,7 @@ exports.handler = (argv) => {
 
     // if there is no game title passed in
     if(argv.gameName==null){
-        // there was an idor ids passed in
+        // there was an id or ids passed in
         let currentIds=[]
 
         // if argv.ids is not array, meaning only one Id is passed in
