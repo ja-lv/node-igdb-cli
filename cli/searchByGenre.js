@@ -80,7 +80,7 @@ const chooseGenre = (res) => {
 
 function renderGameArray(arr){
     arr.map((genre)=>{
-            console.log(`Genre:${genre.name}\n`)
+            console.log(`Game:${genre.name}\n`)
             console.log('------------------------------------------------')
         }
     )
