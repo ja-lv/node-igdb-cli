@@ -20,13 +20,13 @@ exports.builder = {
 }
 
 exports.handler = (argv) => {
-    //if there were no ids or game titles passed in then exit
+    // if there were no ids or game titles passed in then exit
     if(!argv.ids && !argv.gameName){
         console.log("Please specify a engine id (command: -i) or game title (command:-t)")
         return 0
     }
 
-    //if both id and game title are passed in then exit
+    // if both id and game title are passed in then exit
     if(argv.ids!=null&& (argv.gameName!=null)){
         console.log("Only a game title OR an engine id is allowed")
         return 0
@@ -37,17 +37,17 @@ exports.handler = (argv) => {
         // there was an idor ids passed in
         let currentIds=[]
 
-        // if argv.ids is not array, meanin multiple only one Id is passed in
+        // if argv.ids is not array, meaning only one Id is passed in
         if(!Array.isArray(argv.ids)){
             // let argv.ids be the first element in currentIds array
             currentIds[0] = (argv.ids)
         }
         else{
-            //let currentIds equal to the array argv.ids
+            // let currentIds equal to the array argv.ids
             currentIds=argv.ids
         }
         // use our custom module and pass in the currentIds so
-        // we get the game engine(s) info
+        // we get the game engine(s) info and print it
         getEngineInfo(currentIds)
     }
     else {
@@ -78,7 +78,7 @@ exports.handler = (argv) => {
     }
 }
 
-//Uses inquirer to give user a list of games to choose from
+// Uses inquirer to give user a list of games to choose from
 const gamePicker = (res) => {
     let display =[]
     res.forEach(game => {
@@ -94,7 +94,7 @@ const gamePicker = (res) => {
 
     }])
     .then(answer => {
-        //finds and sets the game object that matches the chosne game
+        // finds and sets the game object that matches the chosne game
         let chosenGame=res.find((game) =>{return answer.game==`game: ${game.name}`})
         console.log(chalk`\nEngine id(s) of selected game: {redBright.bold ${chosenGame.game_engines}}\n`)
         console.log('------------------------------------------------')
@@ -122,7 +122,7 @@ const getEngineInfo = engineId =>{
     })
 }
 
-//prints engine info using chalk module to color
+// prints engine info using chalk module to color
 function renderEngineArray(arr){
     arr.map((engine)=>{
             console.log(chalk`{redBright.bold id: ${engine.id}} \nEngine: {magenta.bold ${engine.name}} \nurl: {yellow ${engine.url}} \ncreated: {green ${new Date(engine.created_at)}}\nupdated: {green ${new Date(engine.updated_at)}}\n`)
@@ -131,7 +131,7 @@ function renderEngineArray(arr){
     )
 }
 
-//prints game info using chalk module to color
+// prints game info using chalk module to color
 function renderGameArray(arr){
     arr.map((game)=>{
             console.log(chalk`Title: {blue.bold ${game.name}}\n`)
