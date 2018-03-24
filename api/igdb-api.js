@@ -41,6 +41,29 @@ exports.getGame = (args) =>{
     })
 }
 
+
+exports.getPlatform = (args) =>{
+    return new Promise(function(fulfill, reject){
+        request(
+        {
+            url: config.url + config.platforms + argsUrl(args),
+            headers: {
+                'user-key': config.key,
+                'accept': "application/json"
+            }
+        }, 
+        (error, res, body) =>{
+            if(error) reject(error)
+
+            fulfill(JSON.parse(body))
+        })
+    })
+}
+
+
+
+
+
 function argsUrl({fields = '', ids = '', search = '', limit = ''}){
     const url = "/" 
                 + ((Array.isArray(ids) && ids[0]) ? ids.join(',') + "?" : (search && typeof search == "string") ? "?search=" + search : '?')
