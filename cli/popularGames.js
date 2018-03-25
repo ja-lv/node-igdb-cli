@@ -1,7 +1,7 @@
 const igdb = require('../api/igdb-api'),
     inquirer = require('inquirer')
     chalk = require('chalk')
-exports.command = ['popular', 'p']
+exports.command = ['popular', 'r']
 
 exports.describe = 'get the popular games'
 
