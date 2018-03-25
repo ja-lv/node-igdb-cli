@@ -4,7 +4,7 @@ const inquirer = require('inquirer');
 
 exports.command = ['platform', 'p']
 
-exports.describe = 'search a platform by game'
+exports.describe = 'search a platform by name'
 
 exports.demandCommand = true
 
