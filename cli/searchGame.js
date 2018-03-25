@@ -26,7 +26,7 @@ exports.builder = {
 
 exports.handler = (argv) => {
     if(!argv.id && !argv.title){
-        renderMessage("Plefase specify a game id or game title")
+        renderMessage("Please specify a game id or game title")
         return 0
     }
 
