@@ -4,5 +4,6 @@
     "url": "https://api-endpoint.igdb.com",
     "games": "/games",
     "engine": "/game_engines",
-    "characters": "/character"
+    "characters": "/character",
+    "platforms": "/platforms"
 }

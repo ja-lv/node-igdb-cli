@@ -21,7 +21,6 @@ exports.builder = {
     },
     limit: {
         alias: 'l',
-        default: 5,
         describe: 'limits the result of the search',
         type: 'number'
     }
@@ -76,8 +75,6 @@ exports.handler = (argv) => {
         throw error
     })
 }
-
-
 
 function renderPlatformArray(arr){
 	var n = 0;
