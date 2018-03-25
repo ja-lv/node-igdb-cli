@@ -63,7 +63,7 @@ exports.handler = (argv) => {
                 let gamesWithEngine=response.filter(game=> game.game_engines!=null)
                 // if there are no games with an engine
                 if(gamesWithEngine.length==0){
-                    console.log('No Reults')
+                    console.log('No games with game engine information')
                 } else{
                     //print the games that have an engine id array that is not empty
                     renderGameArray(gamesWithEngine)
