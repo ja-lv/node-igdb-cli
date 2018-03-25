@@ -40,7 +40,7 @@ exports.handler = (argv) => {
         fields: '*',
         search: argv.title,
         ids: [argv.id],
-        limit: argv.limit
+        limit: c
     }).then(response =>{
         if(response)
             renderGameArray(response)

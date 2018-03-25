@@ -1,5 +1,6 @@
 const igdb = require('../api/igdb-api')
 const  inquirer = require('inquirer')
+const chalk = require('chalk');
 
 exports.command = ['searchGenre', 'g']
 
@@ -7,14 +8,10 @@ exports.describe = 'search genre of a game' //'search a game by title'
 
 exports.builder = {
     title: {
-        alias: 'g', //t
-        describe: 'name(g) of genre', //title of the game
+        alias: 'g', //g
+        describe: 'name(g) of genre', //name of the game
         type: 'string'
     },
-    // id: {
-    //     describe: 'id of a the game on the IG database',
-    //     type: 'number'
-    // },
     limit: {
         alias: 'l',
         default: 10,
@@ -27,12 +24,13 @@ exports.builder = {
 
 exports.handler = (argv) => {
     igdb.getGenre({
-        fields: 'name,games',
+        fields: '*',
         limit: argv.limit
     }).then(response =>{
         if(response)
-            renderGameArray(response)
-            chooseGenre(response)
+        // console.log(response)
+        // renderGameArray(response)
+        chooseGenre(response)
     })
     
     .catch(error=>{
@@ -60,10 +58,10 @@ const chooseGenre = (res) => {
         return answer.genre==`genre: ${genre.name}`})
         // console.log(selectedGenre)
         let idstring=selectedGenre.games.slice(0,6);
-        // id='66'
+        // id='49'
         igdb.getGame({
             fields: '*',
-            ids: [idstring],
+            ids: idstring,
             limit: 1
         }).then(response =>{
             if(response)
@@ -79,9 +77,12 @@ const chooseGenre = (res) => {
 }
 
 function renderGameArray(arr){
+
     arr.map((genre)=>{
-            console.log(`Game:${genre.name}\n`)
-            console.log('------------------------------------------------')
+            console.log(chalk.cyan(`\nGame: ${genre.name}\n`))
+
+            console.log(chalk.red('------------------------------------------------'))
         }
+        
     )
 }
