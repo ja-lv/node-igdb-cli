@@ -1,24 +1,23 @@
 const igdb = require('../api/igdb-api')
-exports.command = ['search', 's']
 
-exports.describe = 'search a game by title'
+//originally -> ['search', '$0', 's']
+exports.command = ['searchGameEngine', 'ge']
 
-exports.demandCommand = true
+exports.describe = 'search GameEngine of a game' //'search a game by title'
 
 exports.builder = {
     title: {
-        alias: ['t'],
-        describe: 'title of a game',
+        alias: 'g', 
+        describe: 'name(g) of GameEngine', //title of the game
         type: 'string'
     },
     id: {
-        alias: ['i'],
-        describe: 'id of a the game on the IG database',
+        describe: 'id of a the GameEngine on the IG database',
         type: 'number'
     },
     limit: {
         alias: 'l',
-        default: 5,
+        default: 1,
         describe: 'limits the result of the search',
         type: 'number'
     }
@@ -26,19 +25,18 @@ exports.builder = {
 
 exports.handler = (argv) => {
     if(!argv.id && !argv.title){
-        renderMessage("Plefase specify a game id or game title")
-        return 0
+        renderMessage("Please specify a game id or game title")
+        return ;
     }
 
     if(argv.id && argv.title){
         renderMessage("Only a title or an id is allowed")
-        return 0
+        return ;
     }
-
-    igdb.getGame({
+    igdb.getGameEngine({
         fields: '*',
-        search: argv.title,
-        ids: [argv.id],
+        search: argv.name,
+        id: argv.id,
         limit: argv.limit
     }).then(response =>{
         if(response)
@@ -51,12 +49,11 @@ exports.handler = (argv) => {
 
 function renderGameArray(arr){
     arr.map((game)=>{
-            console.log(`\n Title: ${game.name}\nSummary: ${game.summary ? game.summary : 'Not available'}\n`)
+            console.log(`GameEngine: ${game.name}\nSpecies: ${game.species ? game.species : 'Not available'}\nURL: ${game.url}\n`)
             console.log('------------------------------------------------')
         }
     )
-}
-
+} 
 function renderMessage(str){
     console.log(str)
 }

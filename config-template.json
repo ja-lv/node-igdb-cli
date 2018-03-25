@@ -3,6 +3,6 @@
     "key":  "YOUR IGDB KEY GOES HERE",
     "url": "https://api-endpoint.igdb.com",
     "games": "/games",
-    "engine": "/engine",
+    "engine": "/game_engines",
     "characters": "/character"
 }

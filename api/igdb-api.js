@@ -77,3 +77,13 @@ exports.getCharacters = (args) =>{
         });  
     })
 }
+
+exports.getGenre = (args) =>{
+    return new Promise(function(fulfill, reject){
+        client.genres(args).then(response => {
+            fulfill(response.body)
+        }).catch(error => {
+            reject(error)
+        });  
+    })
+}
