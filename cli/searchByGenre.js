@@ -26,13 +26,18 @@ exports.builder = {
 // https://api-endpoint.igdb.com/genres/?fields=name,games&limit=10
 
 exports.handler = (argv) => {
+    //if genre search is entered, search that genre
+    let search = argv.g ? argv.g : ''
     igdb.getGenre({
-        fields: 'name,games',
-        limit: argv.limit
+        search: search,
+        fields: 'name,games'
     }).then(response =>{
-        if(response)
+        //check if there is a response
+        if((Array.isArray(response) && response[[0]])){
             renderGameArray(response)
-            chooseGenre(response)
+            chooseGenre(response, argv.l)
+        }
+        else console.log("No genres found.")
     })
     
     .catch(error=>{
@@ -40,7 +45,7 @@ exports.handler = (argv) => {
     })
 }
 
-const chooseGenre = (res) => {
+const chooseGenre = (res, limit) => {
     let selection =[]
     res.forEach(genre => {
         selection.push(`genre: ${genre.name}`)
@@ -59,7 +64,11 @@ const chooseGenre = (res) => {
         let selectedGenre=res.find((genre) =>{
         return answer.genre==`genre: ${genre.name}`})
         // console.log(selectedGenre)
-        let idstring=selectedGenre.games.slice(0,6);
+
+        //edit the limit. If its above the game count dont use the limit
+        size = selectedGenre.games.length < limit ? selectedGenre.games.length : limit
+        console.log(size)
+        let idstring=selectedGenre.games.slice(0,size);
         // id='66'
         igdb.getGame({
             fields: '*',
