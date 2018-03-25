@@ -27,10 +27,6 @@ exports.builder = {
     }
 }
 
-
-
-
-
 const platformPicker = (res) => {
    let display =[]
    res.forEach(platform => {
@@ -53,14 +49,6 @@ const platformPicker = (res) => {
      })
      .catch(err => console.log(err))
 }
-
-
-
-
-
-
-
-
 
 exports.handler = (argv) => {
     if(!argv.id && !argv.title){

@@ -87,3 +87,21 @@ exports.getGenre = (args) =>{
         });  
     })
 }
+
+exports.getPlatform = (args) =>{
+    return new Promise(function(fulfill, reject){
+        request(
+        {
+            url: config.url + config.platforms + argsUrl(args),
+            headers: {
+                'user-key': config.key,
+                'accept': "application/json"
+            }
+        }, 
+        (error, res, body) =>{
+            if(error) reject(error)
+
+            fulfill(JSON.parse(body))
+        })
+    })
+}
