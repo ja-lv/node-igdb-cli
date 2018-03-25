@@ -1,4 +1,4 @@
-const  
+const
     config = require('./config'),
     igdb = require('igdb-api-node').default,
     client = igdb(config.key),
@@ -6,7 +6,7 @@ const
 
 //takes in args, ex:
 // {
-//     fields: "*",   
+//     fields: "*",
 //     search: 'metal gear'
 // }
 //refer to https://igdb.github.io/api/references/ for args
@@ -19,7 +19,7 @@ exports.getGameWrapper = (args) =>{
             fulfill(response.body)
         }).catch(error => {
             reject(error)
-        });  
+        });
     })
 }
 
@@ -32,7 +32,25 @@ exports.getGame = (args) =>{
                 'user-key': config.key,
                 'accept': "application/json"
             }
-        }, 
+        },
+        (error, res, body) =>{
+            if(error) reject(error)
+
+            fulfill(JSON.parse(body))
+        })
+    })
+}
+
+exports.getEngine = (args) =>{
+    return new Promise(function(fulfill, reject){
+        request(
+        {
+            url: config.url + config.engine + argsUrl(args),
+            headers: {
+                'user-key': config.key,
+                'accept': "application/json"
+            }
+        },
         (error, res, body) =>{
             if(error) reject(error)
 
@@ -42,7 +60,7 @@ exports.getGame = (args) =>{
 }
 
 function argsUrl({fields = '', ids = '', search = '', limit = ''}){
-    const url = "/" 
+    const url = "/"
                 + ((Array.isArray(ids) && ids[0]) ? ids.join(',') + "?" : (search && typeof search == "string") ? "?search=" + search : '?')
                 + ((Array.isArray(fields) && fields.length) ? "&fields=" + fields.join(',') : (fields == "*") ? "&fields=*" : '')
                 + ((typeof limit == "number" && limit > 0) ? "&limit=" + limit : '')
