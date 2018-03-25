@@ -1,7 +1,0 @@
-{
-    "appName": "IGDB-CLI",
-    "key":  "YOUR IGDB KEY GOES HERE",
-    "url": "https://api-endpoint.igdb.com",
-    "games": "/games",
-    "characters": "/character"
-}
