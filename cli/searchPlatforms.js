@@ -44,7 +44,7 @@ const platformPicker = (res) => {
        let chosenPlatform=res.find((platform) =>{return answer.platform==`platform: ${platform.name}`})
 	   console.log(`\nTitle: ${chalk.yellow.bold(chosenPlatform.name)}\nGeneration: ${chalk.yellow.bold(chosenPlatform.generation)  ? chalk.yellow.bold(chosenPlatform.generation) : 'No generation available'}\nID: ${chalk.yellow.bold(chosenPlatform.id)}\nURL: ${chalk.yellow.bold(chosenPlatform.url)}`)
        console.log('------------------------------------------------')
-       //getEngineInfo(chosenPlatform.name)
+      
      })
      .catch(err => console.log(err))
 }
