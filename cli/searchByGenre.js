@@ -1,5 +1,7 @@
 const igdb = require('../api/igdb-api')
-const  inquirer = require('inquirer')
+const  inquirer = require('inquirer'),
+chalk = require('chalk')
+
 
 exports.command = ['searchGenre', 'g']
 
@@ -89,8 +91,8 @@ const chooseGenre = (res, limit) => {
 
 function renderGameArray(arr){
     arr.map((genre)=>{
-            console.log(`Game:${genre.name}\n`)
-            console.log('------------------------------------------------')
+            console.log(chalk`Game: {blue.cyan ${genre.name}}\n`)
+            console.log(chalk.red('------------------------------------------------'))
         }
     )
 }
