@@ -35,7 +35,7 @@ exports.handler = (argv) => {
 
 function renderPopularyArray(arr){
     var n = 1
-    arr.forEach(game => {8a
+    arr.forEach(game => {
         console.log(chalk `{red ${n}}. Title: {blue ${game.name}}, Popularity: {green ${game.popularity}}, Rating: {yellow ${game.rating ? game.rating : 'No Rating Avaible'}}`)
         console.log('------------------------------------------------------------------------------------------')
         n++
