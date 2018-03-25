@@ -1,21 +1,20 @@
 /*
 To be edited to get characters instead of games
 */
-
-const igdb = require('../api/igdb-api')
-
+const igdb = require('../api/igdb-api'),
+chalk = require("chalk")
 exports.command = ['searchCH', '$0', 'sC'] //originally -> ['search', '$0', 's']
 
 exports.describe = 'search a character by name' //'search a game by title'
 
 exports.builder = {
-    title: {
+    character: {
         alias: 'c', //t
         describe: 'name(c) of the character', //title of the game
         type: 'string'
     },
     id: {
-        describe: 'id of a the game on the IG database',
+        describe: 'id of a game on the IG database',
         type: 'number'
     },
     limit: {
@@ -43,8 +42,8 @@ exports.handler = (argv) => {
 
 function renderGameArray(arr){
     arr.map((game)=>{
-            console.log(`Character Name: ${game.name}\nSpecies: ${game.species ? game.species : 'Not available'}\nURL: ${game.url}\n`)
-            console.log('------------------------------------------------')
+            console.log(chalk `{cyan.bold Character Name: ${game.name}}\n{bgRed.bold Species: ${game.species ? game.species : 'Not available'}}\n{magenta.bold URL: ${game.url}}\n`)
+            console.log(chalk `{white.bold *****************************************************}`)
         }
     )
 }
