@@ -34,7 +34,7 @@ exports.handler = (argv) => {
     }).then(response =>{
         //check if there is a response
         if((Array.isArray(response) && response[[0]])){
-            renderGameArray(response)
+            // renderGameArray(response)
             chooseGenre(response, argv.l)
         }
         else console.log("No genres found.")
@@ -89,7 +89,7 @@ const chooseGenre = (res, limit) => {
 
 function renderGameArray(arr){
     arr.map((genre)=>{
-            console.log(`Genre:${genre.name}\n`)
+            console.log(`Game:${genre.name}\n`)
             console.log('------------------------------------------------')
         }
     )
