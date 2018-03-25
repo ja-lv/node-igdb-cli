@@ -3,7 +3,7 @@ To be edited to get characters instead of games
 */
 const igdb = require('../api/igdb-api'),
 chalk = require("chalk")
-exports.command = ['searchCH', '$0', 'sC'] //originally -> ['search', '$0', 's']
+exports.command = ['searchCH', 'sC'] //originally -> ['search', '$0', 's'] 
 
 exports.describe = 'search a character by name' //'search a game by title'
 
@@ -28,8 +28,8 @@ exports.builder = {
 exports.handler = (argv) => {
     igdb.getCharacters({
         fields: '*',
-        search: argv.name,
-        id: argv.id,
+        search: argv.c,
+        ids: [argv.id],
         limit: argv.limit
     }).then(response =>{
         if(response)
