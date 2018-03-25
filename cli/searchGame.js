@@ -1,5 +1,4 @@
 const igdb = require('../api/igdb-api')
-
 exports.command = ['search', 's']
 
 exports.describe = 'search a game by title'
@@ -52,7 +51,7 @@ exports.handler = (argv) => {
 
 function renderGameArray(arr){
     arr.map((game)=>{
-            console.log(`\nTitle: ${game.name}\nSummary: ${game.summary ? game.summary : 'Not available'}\n`)
+            console.log(`\n Title: ${game.name}\nSummary: ${game.summary ? game.summary : 'Not available'}\n`)
             console.log('------------------------------------------------')
         }
     )
