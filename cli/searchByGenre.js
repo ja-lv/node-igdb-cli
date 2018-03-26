@@ -9,8 +9,8 @@ exports.describe = 'search genre of a game' //'search a game by title'
 
 exports.builder = {
     title: {
-        alias: 'g', //t
-        describe: 'name(g) of genre', //title of the game
+        alias: 'g', //g
+        describe: 'name(g) of genre', //name of the game
         type: 'string'
     },
     // id: {
@@ -38,6 +38,7 @@ exports.handler = (argv) => {
         if((Array.isArray(response) && response[[0]])){
             // renderGameArray(response)
             chooseGenre(response, argv.l)
+
         }
         else console.log("No genres found.")
     })
@@ -46,7 +47,7 @@ exports.handler = (argv) => {
         throw error
     })
 }
-
+// Uses inquirer to give user a list of games to choose from
 const chooseGenre = (res, limit) => {
     let selection =[]
     res.forEach(genre => {
@@ -56,20 +57,20 @@ const chooseGenre = (res, limit) => {
     return inquirer.prompt([{
         type: 'list',
         message: 'Select a genre to show some Games',
-        name: 'genre',
+        name: 'genre',     
 
         choices: selection
 
     }])
     
     .then(answer => {
+        // finds and sets the game object that matches the selected genre to the selectedGenre variable        
         let selectedGenre=res.find((genre) =>{
         return answer.genre==`genre: ${genre.name}`})
         // console.log(selectedGenre)
 
-        //edit the limit. If its above the game count dont use the limit
         size = selectedGenre.games.length < limit ? selectedGenre.games.length : limit
-        console.log(size)
+        // console.log(size)
         let idstring=selectedGenre.games.slice(0,size);
         // id='66'
         igdb.getGame({
