@@ -1,6 +1,4 @@
-/*
-To be edited to get characters instead of games
-*/
+
 const igdb = require('../api/igdb-api'),
 chalk = require("chalk")
 exports.command = ['searchCH', 'sC'] //originally -> ['search', '$0', 's'] 
@@ -17,6 +15,53 @@ exports.builder = {
         describe: 'id of a game on the IG database',
         type: 'number'
     },
+    // slug: {
+    //     describe: 'slug',
+    //     type: 'string'
+    // },
+    // url: {
+    //     describe: 'url',
+    //     type: 'string'
+    // },
+    // created_at:{
+    //     describe: 'created number',
+    //     type: 'number'
+    // },
+    // updated_at:{
+    //     describe: 'updated number',
+    //     type: 'number'
+    // },
+
+    // mug_shot:{
+    //     describe: 'image of character',
+    //     type:'object'
+    // },
+
+    // gender:{
+    //     describe: 'gender of character',
+    //     type:'number'
+
+    // },
+    // akas: {
+    //     describe: 'alias of character',
+    //     type:'array of strings'
+    // },
+
+    // species:{
+    //     describe: 'species of character',
+    //     type:'number'
+    // },
+
+    // games:{
+    //     describe: 'games of character',
+    //     type:'number'
+    // },
+
+    // people:{
+    //     describe: 'people of character',
+    //     type:'number'
+    // },
+
     limit: {
         alias: 'l',
         default: 1,
